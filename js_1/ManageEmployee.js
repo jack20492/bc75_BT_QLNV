@@ -1,7 +1,14 @@
 class ManageEmployee {
   constructor() {
-    this.employeelist = [];
+    this.employeeList = [];
   }
+
+  addEmployee(employee) {
+    this.employeeList.push(employee);
+  }
+  deleteEmployee() {}
+  editEmployee() {}
+  searchEmployee() {}
 }
 
 export default ManageEmployee;
