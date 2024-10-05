@@ -23,13 +23,14 @@ class Employee {
 
   // Tính tổng luong
   calTotalSalary() {
-    if (this.chucVu === "Giám đốc") {
+    if (this.chucVu === "Sếp") {
       this.tongLuong = this.luongCoBan * 3;
-    } else if (this.chucVu === "Trưởng Phòng") {
+    } else if (this.chucVu === "Trưởng phòng") {
       this.tongLuong = this.luongCoBan * 2;
     } else {
       this.tongLuong = this.luongCoBan;
     }
+    return this.tongLuong;
   }
 
   // Xếp loại nhân viên

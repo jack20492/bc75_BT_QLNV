@@ -13,9 +13,9 @@ getEleId("btnThemNV").onclick = () => {
   const email = getEleId("email").value;
   const matKhau = getEleId("password").value;
   const ngayLam = getEleId("datepicker").value;
-  const luongCoBan = getEleId("luongCB").value;
+  const luongCoBan = getEleId("luongCB").value * 1;
   const chucVu = getEleId("chucvu").value;
-  const gioLam = getEleId("gioLam").value;
+  const gioLam = getEleId("gioLam").value * 1;
 
   // Create new Employee object
   const employee = new Employee(
@@ -38,7 +38,9 @@ getEleId("btnThemNV").onclick = () => {
 
 const renderEmployee = (employeeList) => {
   let contentHTML = "";
-  employeeList.foreach((employee) => {
+  employeeList.forEach((employee) => {
+    employee.calTotalSalary();
+    employee.rankEmployee();
     contentHTML += `
         <tr>
           <td>${employee.taiKhoan}</td>
@@ -46,7 +48,10 @@ const renderEmployee = (employeeList) => {
           <td>${employee.email}</td>
           <td>${employee.ngayLam}</td>
           <td>${employee.chucVu}</td>
-          <td>${employee.tongLuong}</td>
+          <td>${new Intl.NumberFormat("vi-VN", {
+            style: "currency",
+            currency: "VND",
+          }).format(employee.tongLuong)}</td>
           <td>${employee.xepLoai}</td>
         </tr>
     `;
