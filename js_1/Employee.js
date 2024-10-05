@@ -1,12 +1,12 @@
 class Employee {
-  constructor(taiKhoan, hoTen, email, ngayLam, chucVu, tongLuong, xepLoai) {
+  constructor(taiKhoan, hoTen, email, ngayLam, chucVu, luongCoBan, gioLam) {
     this.taiKhoan = taiKhoan;
     this.hoTen = hoTen;
     this.email = email;
     this.ngayLam = ngayLam;
     this.chucVu = chucVu;
-    this.tongLuong = tongLuong;
-    this.xepLoai = xepLoai;
+    this.luongCoBan = luongCoBan;
+    this.gioLam = gioLam;
   }
 }
 
