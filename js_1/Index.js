@@ -2,10 +2,26 @@ import Employee from "./../js_1/Employee.js";
 import ManageEmployee from "./../js_1/ManageEmployee.js";
 
 const manageEmployee = new ManageEmployee();
-
 const getEleId = (id) => document.getElementById(id);
 
-// Lấy thông tin nhâ nviên nhập vào
+// set local storage: save list of employee to local storage
+const setLocalStorage = () => {
+  const dataString = JSON.stringify(manageEmployee.employeeList);
+  localStorage.setItem("LIST_EMPLOYEES", dataString);
+};
+
+// get LIST_EMPLOYEES from local storage
+const getLocalStorage = () => {
+  const dataString = localStorage.getItem("LIST_EMPLOYEES");
+  if (dataString) {
+    // convert string to listfood
+    const dataJSON = JSON.parse(dataString);
+    manageEmployee.employeeList = dataJSON;
+    renderEmployee(manageEmployee.employeeList);
+  }
+};
+
+// Lấy thông tin nhân viên nhập vào
 getEleId("btnThemNV").onclick = () => {
   // Lấy thông tin nhân viên tù bảng
   const taiKhoan = getEleId("tknv").value;
@@ -32,10 +48,20 @@ getEleId("btnThemNV").onclick = () => {
   manageEmployee.addEmployee(employee);
 
   renderEmployee(manageEmployee.employeeList);
+
+  // set local storage
+  setLocalStorage();
 };
 
-// In thông tin nhân viên ra danh sách table
+// delete employee
+const deleteEmp = (taiKhoan) => {
+  manageEmployee.deleteEmployee(taiKhoan);
+  // renderEmployee
+  renderEmployee(manageEmployee.employeeList);
+};
+window.deleteEmp = deleteEmp;
 
+// In thông tin nhân viên ra danh sách table
 const renderEmployee = (employeeList) => {
   let contentHTML = "";
   employeeList.forEach((employee) => {
@@ -53,6 +79,11 @@ const renderEmployee = (employeeList) => {
             currency: "VND",
           }).format(employee.tongLuong)}</td>
           <td>${employee.xepLoai}</td>
+          <td>
+          <button class="btn btn-danger" onclick="deleteEmp('${
+            employee.taiKhoan
+          }')">Xóa</button>
+          </td>
         </tr>
     `;
   });
