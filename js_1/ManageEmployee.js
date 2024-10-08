@@ -6,8 +6,20 @@ class ManageEmployee {
   addEmployee(employee) {
     this.employeeList.push(employee);
   }
-  editEmployee() {}
+  getEmployeeByTaiKhoan(taiKhoan) {
+    const index = this.findIndexByID(taiKhoan);
+    if (index !== -1) {
+      return this.employeeList[index]; //
+    }
+    return null;
+  }
 
+  updateEmp(employee) {
+    const index = this.findIndexByID(employee.taiKhoan);
+    if (index !== -1) {
+      this.employeeList[index] = employee;
+    }
+  }
   // Find vị trí
   findIndexByID(taiKhoan) {
     const index = this.employeeList.findIndex((employee) => {
@@ -21,7 +33,20 @@ class ManageEmployee {
       this.employeeList.splice(index, 1);
     }
   }
-  searchEmployee() {}
+  filterEmployee(type) {
+    let listEmpFilter = [];
+
+    if (type === "all") {
+      return this.employeeList; // Return all employees if 'all' is selected
+    } else {
+      // Use the filter method and assign the result to listEmpFilter
+      listEmpFilter = this.employeeList.filter((employee) => {
+        return employee.type === type; // Filter by type (Xuất sắc, Giỏi, etc.)
+      });
+    }
+
+    return listEmpFilter; // Return the filtered list
+  }
 }
 
 export default ManageEmployee;
