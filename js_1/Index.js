@@ -76,7 +76,7 @@ getEleId("btnThem").onclick = () => {
   // reset form
   getEleId("form_1").reset();
   // enable input field
-  // getEleId("tknv").removeAttr("disabled");
+  getEleId("tknv").removeAttribute("disabled");
 };
 
 // Cap nhat Employee
