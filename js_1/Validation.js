@@ -147,9 +147,6 @@ function kiemTraForm() {
   if (!kiemTraChucVu(chucVu)) isValid = false;
   if (!kiemTraGioLam(gioLam)) isValid = false;
 
-  // Bật hoặc tắt nút "Thêm người dùng" dựa trên kết quả kiểm tra
-  document.getElementById("btnThemNV").disabled = !isValid;
-
   return isValid;
 }
 

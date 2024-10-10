@@ -34,18 +34,14 @@ class ManageEmployee {
     }
   }
   filterEmployee(type) {
-    let listEmpFilter = [];
-
     if (type === "all") {
       return this.employeeList; // Return all employees if 'all' is selected
     } else {
       // Use the filter method and assign the result to listEmpFilter
-      listEmpFilter = this.employeeList.filter((employee) => {
+      return this.employeeList.filter((employee) => {
         return employee.type === type; // Filter by type (Xuất sắc, Giỏi, etc.)
       });
     }
-
-    return listEmpFilter; // Return the filtered list
   }
 }
 
