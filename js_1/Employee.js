@@ -44,6 +44,7 @@ class Employee {
     } else {
       this.xepLoai = "Trung bình";
     }
+    return this.xepLoai;
   }
 }
 
