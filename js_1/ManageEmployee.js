@@ -39,7 +39,7 @@ class ManageEmployee {
     } else {
       // Use the filter method and assign the result to listEmpFilter
       return this.employeeList.filter((employee) => {
-        return employee.type === type; // Filter by type (Xuất sắc, Giỏi, etc.)
+        return employee.xepLoai === type; // Filter by type (Xuất sắc, Giỏi, etc.)
       });
     }
   }
